@@ -1,0 +1,11 @@
+.bg-map-img{
+    background-image: url("../../assets/images/map.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+/* .home-IonToolbar{
+    --background:transparent ;
+    display: flex;
+    font-size: 30px;
+} */
