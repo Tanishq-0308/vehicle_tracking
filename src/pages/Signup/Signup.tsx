@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonList, IonPage, IonRouterLink, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonList, IonPage, IonRouterLink, IonRow, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
 import React, { useState } from 'react';
 import { chevronBackSharp, } from 'ionicons/icons'
 import { useHistory } from 'react-router';
@@ -27,7 +27,7 @@ const Signup: React.FC = () => {
     return (
         <IonPage>
             <IonContent fullscreen >
-                <div className='bg-imgg overflow-hidden h-screen'>
+                <div className='bg-img overflow-auto h-screen'>
                     <div className='overlay'></div>
                     <IonHeader className='bg-transparent'>
                         <IonToolbar className=' IonToolbar' >
@@ -56,6 +56,10 @@ const Signup: React.FC = () => {
                             </div>
                         </div>
                         <form onSubmit={handleSubmit}>
+                        <IonGrid >
+                            <IonRow className='ion-justify-content-center'>
+                                <IonCol size='12' sizeMd='8' sizeLg='6' sizeXl='4'>
+                                
                             <IonList lines="none" className="bg-transparent">
                                 <IonItem lines="none" className="m-4 rounded-md">
                                     <IonInput
@@ -121,6 +125,9 @@ const Signup: React.FC = () => {
                                     Submit
                                 </IonButton>
                             </IonList>
+                                </IonCol>
+                            </IonRow>
+                        </IonGrid>
                         </form>
                     </div>
                 </div>

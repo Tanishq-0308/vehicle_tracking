@@ -4,7 +4,6 @@ import driverPic from '../../../assets/images/driver_pic.png'
 import { car, homeOutline, logOutOutline, mail, person, reader } from 'ionicons/icons';
 import { Route, Redirect } from 'react-router';
 import Home from '../Home';
-import MyTrips from '../../MyTrips/MyTrips';
 import Profile from '../../Profile/Profile';
 import TandC from '../../T&C/T&C';
 import Contactus from '../../Contactus/Contactus';
@@ -58,7 +57,7 @@ const Sidebar: React.FC = () => {
                     </IonHeader>
                     <IonContent>
                         {paths.map((items, index) => (
-                            <IonMenuToggle key={index}>
+                            <IonMenuToggle key={index} autoHide={false}>
                                 <IonItem routerDirection='none' routerLink={items.path} className='ion-margin-top'>
                                     <IonIcon icon={items.icon} color='primary'></IonIcon>
 

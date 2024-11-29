@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonList, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
 import './Signin.css'
 import bgImg from '../../assets/images/bg.png'
@@ -12,7 +12,7 @@ const Signin: React.FC = () => {
         <IonPage>
             <IonContent fullscreen>
                 <div
-                className='bg-img h-screen'
+                className='bg-img h-full overflow-auto'
                 >
                     <div className="overlay"></div>
                     <div className='w-full flex h-[320px] overflow-hidden items-center justify-center'>
@@ -23,12 +23,18 @@ const Signin: React.FC = () => {
                         <h3>
                             Enter your phone number to <br /> sign in/sign up
                         </h3>
-                        <IonList lines='none' className='bg-transparent'>
+                        <IonGrid >
+                            <IonRow className='ion-justify-content-center'>
+                                <IonCol size='12' sizeMd='8' sizeLg='6' sizeXl='4'>
+                                <IonList lines='none' className='bg-transparent'>
                             <IonItem lines='none' className='m-4 rounded-md'>
                                 <IonInput type='text' className='' placeholder='Phone number'></IonInput>
                             </IonItem>
                             <IonButton expand='block' size='large' className='text-sm mx-4' routerLink='/verification'>Continue</IonButton>
                         </IonList>
+                                </IonCol>
+                            </IonRow>
+                        </IonGrid>
                     </div>
                 </div>
             </IonContent>

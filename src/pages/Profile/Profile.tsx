@@ -1,8 +1,15 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonList, IonMenuButton, IonPage, IonRow, IonSegment, IonSegmentButton, IonSegmentContent, IonSegmentView, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonList, IonMenuButton, IonPage, IonRow, IonSegment, IonSegmentButton, IonSegmentContent, IonSegmentView, IonTitle, IonToolbar } from '@ionic/react';
 import { camera, chevronForward } from 'ionicons/icons';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Profile: React.FC = () => {
+
+    const [selectedSegment, setSelectedSegment] = useState('about_driver');
+
+    // Handle segment change
+    const handleSegmentChange = (event: CustomEvent) => {
+        setSelectedSegment(event.detail.value);
+    };
 
     return (
         <IonPage>
@@ -28,7 +35,7 @@ const Profile: React.FC = () => {
                             </p>
                         </div>
                     </div>
-                    <IonSegment mode='md'>
+                    <IonSegment mode='md' value={selectedSegment} onIonChange={handleSegmentChange}>
                         <IonSegmentButton className='ion-text-center' contentId='about_driver' value='about_driver'>
                             My Info
                         </IonSegmentButton>
@@ -39,34 +46,54 @@ const Profile: React.FC = () => {
                 </div>
             </IonHeader>
             <IonContent>
-                <div className='bg-img h-full '>
+                <div className='bg-img h-full'>
                     <div className='overlay'></div>
                     <IonSegmentView>
-                        <IonSegmentContent id='about_driver' >
-                            <form action="">
-                                <IonCard className='m-3'>
+                    {selectedSegment === 'about_driver'  && (
+                        <IonSegmentContent id='about_driver' className=' h-full'>
+                            <form action="" className='h-full flex flex-col'>
+                                <IonGrid>
+                                    <IonRow className='ion-justify-content-center'>
+                                        <IonCol size='12' sizeMd='8' sizeLg='6' sizeXl='4'>
+                                        <IonCard className='m-3'>
                                     <IonCardContent>
                                         <IonInput label='Driver Name' placeholder='Peter Williamson' labelPlacement='floating'></IonInput>
                                     </IonCardContent>
                                 </IonCard>
-                                <IonCard className='m-3'>
+                                        </IonCol>
+                                    </IonRow>
+                                    <IonRow className='ion-justify-content-center'>
+                                        <IonCol size='12' sizeMd='8' sizeLg='6' sizeXl='4'>
+                                        <IonCard className='m-3'>
                                     <IonCardContent>
                                         <IonInput label='Phone Number' placeholder='+91 9998887771' labelPlacement='floating'></IonInput>
                                     </IonCardContent>
                                 </IonCard>
-                                <IonCard className='m-3'>
+                                        </IonCol>
+                                    </IonRow>
+                                    <IonRow className='ion-justify-content-center'>
+                                        <IonCol size='12' sizeMd='8' sizeLg='6' sizeXl='4'>
+                                        <IonCard className='m-3'>
                                     <IonCardContent>
                                         <IonInput label='License Number' placeholder='R730' labelPlacement='floating'></IonInput>
                                     </IonCardContent>
                                 </IonCard>
-                                <IonButton expand='block' className='m-3 bottom-0' size='large'>
+                                        </IonCol>
+                                    </IonRow>
+                                </IonGrid>
+                                <IonButton expand='block' className=' w-full bottom-0' size='large'>
                                     Update Profile
                                 </IonButton>
                             </form>
                         </IonSegmentContent>
+                    )}
+                    {selectedSegment === 'trip_history' && (
                         <IonSegmentContent id='trip_history' className='mb-0 relative rounded-xl z-50 w-[100% -27px] mx-2 mt-3 bg-none'> 
                                 {
-                                    [...Array(6)].map((_)=>(
+                                    [...Array(9)].map((_)=>(
+                                        <IonGrid>
+                                            <IonRow className='ion-justify-content-center'>
+                                        <IonCol size='12' sizeMd='8' sizeLg='6' sizeXl='4'>
                                         <IonList className='m-2 rounded-lg '>
                                         <IonItem lines='none' className=' p-0 ion-no-padding'>
                                             <div className='w-full m-1 flex flex-col gap-1'>
@@ -97,9 +124,13 @@ const Profile: React.FC = () => {
                                             </div>
                                         </IonItem>
                                     </IonList>
+                                        </IonCol>
+                                    </IonRow>
+                                        </IonGrid>
                                     ))
                                 }
                         </IonSegmentContent>
+                        )}
                     </IonSegmentView>
                 </div>
 

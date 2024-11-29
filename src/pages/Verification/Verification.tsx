@@ -1,4 +1,4 @@
-import { IonBackButton, IonButton, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonList, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
 import './Verification.css'
 import {chevronBackSharp} from 'ionicons/icons'
@@ -8,7 +8,7 @@ const Verfication: React.FC = () => {
     return (
         <IonPage>
             <IonContent fullscreen >
-            <div className='bg-imgg overflow-hidden h-screen'> 
+            <div className='bg-img overflow-auto h-screen'> 
                 <div className='overlay'></div>
                 <IonHeader className='bg-transparent ion-no-border'>
                 <IonToolbar className=' IonToolbar' >
@@ -28,12 +28,18 @@ const Verfication: React.FC = () => {
             <div className='pt-14 relative z-[9999] text-center'>
                     <h2 className='text-[#feb940] text-lg m-0 mb-8'>Phone Verification</h2>
                     <h3 className='text-white text-[rem] m-0 font-normal e'>Enter OTP sent on below given number <br />+91 9876543210</h3>
+                    <IonGrid >
+                            <IonRow className='ion-justify-content-center'>
+                                <IonCol size='12' sizeMd='8' sizeLg='6' sizeXl='4'>         
                     <IonList lines='none' className='bg-transparent mt-14'>
                             <IonItem lines='none' className='m-4 rounded-md px-4 py-2 '>
                                 <IonInput type='text' className='text-2xl text-center tracking-[13px]' value="588700"></IonInput>
                             </IonItem>
                             <IonButton expand='block' size='large' className='text-sm  px-4 py-2 mx-4' routerLink='/signup'>Submit</IonButton>
                         </IonList>
+                                </IonCol>
+                            </IonRow>
+                        </IonGrid>
                 </div>
                 </div>
             </IonContent>
