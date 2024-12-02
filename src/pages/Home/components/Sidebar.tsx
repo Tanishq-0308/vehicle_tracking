@@ -2,46 +2,53 @@ import { IonContent, IonHeader, IonIcon, IonItem, IonMenu, IonMenuToggle, IonPag
 import React from 'react';
 import driverPic from '../../../assets/images/driver_pic.png'
 import { car, homeOutline, logOutOutline, mail, person, reader } from 'ionicons/icons';
-import { Route, Redirect } from 'react-router';
+import { Route, Redirect, useHistory } from 'react-router';
 import Home from '../Home';
 import Profile from '../../Profile/Profile';
 import TandC from '../../T&C/T&C';
 import Contactus from '../../Contactus/Contactus';
 
-const Sidebar: React.FC = () => {
-    const paths = [
-        {
-            name: 'Home',
-            path: '/app/home',
-            icon: homeOutline
-        },
-        {
-            name: 'My Trips',
-            path: '/app/profile',
-            icon: car
-        },
-        {
-            name: 'My Profile',
-            path: '/app/profile',
-            icon: person
-        },
-        {
-            name: 'Terms & Conditions',
-            path: '/app/terms-&-conditions',
-            icon: reader
-        },
-        {
-            name: 'Contact us',
-            path: '/app/contact-us',
-            icon: mail
-        },
-        {
-            name: 'Logout',
-            path: '/signin',
-            icon: logOutOutline
-        }
+const paths = [
+    {
+        name: 'Home',
+        path: '/app/home',
+        icon: homeOutline
+    },
+    {
+        name: 'My Trips',
+        path: '/app/profile',
+        icon: car
+    },
+    {
+        name: 'My Profile',
+        path: '/app/profile',
+        icon: person
+    },
+    {
+        name: 'Terms & Conditions',
+        path: '/app/terms-&-conditions',
+        icon: reader
+    },
+    {
+        name: 'Contact us',
+        path: '/app/contact-us',
+        icon: mail
+    },
+    {
+        name: 'Logout',
+        path: '',
+        icon: logOutOutline
+    }
 
-    ]
+];
+const Sidebar: React.FC = () => {
+    const history=useHistory();
+
+    const handleLogout=()=>{
+        localStorage.removeItem('token');
+        history.push('/signin')
+    }
+   
     return (
         <IonPage>
             <IonSplitPane contentId='main'>
@@ -61,7 +68,7 @@ const Sidebar: React.FC = () => {
                                 <IonItem routerDirection='none' routerLink={items.path} className='ion-margin-top'>
                                     <IonIcon icon={items.icon} color='primary'></IonIcon>
 
-                                    <h4 className='ml-3'>{items.name}</h4>
+                                    <h4 className='ml-3' onClick={items.name==='Logout' ? handleLogout : undefined}>{items.name}</h4>
                                 </IonItem>
                             </IonMenuToggle>
                         ))}
