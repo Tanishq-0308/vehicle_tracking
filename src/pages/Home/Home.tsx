@@ -141,9 +141,9 @@ const Home: React.FC = () => {
                           </IonCol>
                         </IonRow>
                       </div>
-                      <div className='pl-[9px] pt-1'>
+                      <div className='p-2'>
                         <IonRow className='flex justify-between'>
-                          <IonCol className='pb-1' size='10'>
+                          <IonCol className='pb-1' size='9'>
                             <p className='text-gray-400'>Current Location</p>
                             <h4 className='text-gray-600'>1141, Hemiltone tower, Newyork, USA</h4>
                           </IonCol>

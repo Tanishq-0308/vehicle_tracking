@@ -1,43 +1,46 @@
 import { IonContent, IonHeader, IonIcon, IonItem, IonMenu, IonMenuToggle, IonPage, IonRouterLink, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
 import driverPic from '../../../assets/images/driver_pic.png'
-import { car, homeOutline, logOutOutline, mail, person, reader } from 'ionicons/icons';
 import { Route, Redirect, useHistory } from 'react-router';
 import Home from '../Home';
 import Profile from '../../Profile/Profile';
 import TandC from '../../T&C/T&C';
 import Contactus from '../../Contactus/Contactus';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
+import { ContactMail, ContentPasteOutlined, Logout } from '@mui/icons-material';
 
 const paths = [
     {
         name: 'Home',
         path: '/app/home',
-        icon: homeOutline
+        icon: <HomeIcon/>
     },
     {
         name: 'My Trips',
         path: '/app/profile',
-        icon: car
+        icon: <LocalShippingIcon/> 
     },
     {
         name: 'My Profile',
         path: '/app/profile',
-        icon: person
+        icon: <PersonIcon/>
     },
     {
         name: 'Terms & Conditions',
         path: '/app/terms-&-conditions',
-        icon: reader
+        icon: <ContentPasteOutlined/>
     },
     {
         name: 'Contact us',
         path: '/app/contact-us',
-        icon: mail
+        icon: <ContactMail/>
     },
     {
         name: 'Logout',
         path: '',
-        icon: logOutOutline
+        icon: <Logout/>
     }
 
 ];
@@ -66,8 +69,7 @@ const Sidebar: React.FC = () => {
                         {paths.map((items, index) => (
                             <IonMenuToggle key={index} autoHide={false}>
                                 <IonItem routerDirection='none' routerLink={items.path} className='ion-margin-top'>
-                                    <IonIcon icon={items.icon} color='primary'></IonIcon>
-
+                                    <span className='text-[#feb940]'>{items.icon}</span>
                                     <h4 className='ml-3' onClick={items.name==='Logout' ? handleLogout : undefined}>{items.name}</h4>
                                 </IonItem>
                             </IonMenuToggle>
